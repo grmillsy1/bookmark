@@ -4,7 +4,7 @@
     <title>Bookmark Manager</title>
     <body>
       <%if current_user%>
-        Welcome, <%=current_user.email %>
+        Hello, <%=current_user.email %> 
       <% end %>
       <% if flash[:errors] && !flash[:errors].empty? %>
         Please refer to th following errors below:

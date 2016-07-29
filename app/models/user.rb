@@ -14,8 +14,8 @@ class User
   property :email,   String, required: true, unique: true,
     format: :email_address,
     :messages => {
-      :presence => "We need your email address",
-      :is_unique => "We already have that email address",
+      :presence => "Check yawh box",
+      :is_unique => "SOZ, you ain't original",
       :format => "Whoa there cowboy!! That aint no email"
     }
   property :password_digest, String, length: 60
@@ -23,5 +23,14 @@ class User
   def password=(password)
     @password = password  #WHYYY? DOES THIS NOT REVEAL THE PASSWORD?
     self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def self.authenticate(email, password)
+    user = first(email: email)
+    if user && BCrypt::Password.new(user.password_digest) == password
+      user
+    else
+      nil
+    end
   end
 end
