@@ -14,8 +14,8 @@ class User
   property :email,   String, required: true, unique: true,
     format: :email_address,
     :messages => {
-      presence: :"We need your email address",
-      is_unique: "We already have that email address",
+      :presence => "We need your email address",
+      :is_unique => "We already have that email address",
       :format => "Whoa there cowboy!! That aint no email"
     }
   property :password_digest, String, length: 60
