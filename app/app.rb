@@ -90,6 +90,5 @@ set :session_secret, "Mali's secret"
     redirect to '/links'
   end
 
-
   run! if app_file == $0
 end
